@@ -23,4 +23,6 @@ public class RoomController {
                 .orElseThrow(()-> new ResponseStatusException(HttpStatus.NOT_FOUND, "Room not found"));
     }
 
+
+
 }

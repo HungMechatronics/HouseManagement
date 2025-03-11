@@ -13,8 +13,8 @@ public class HmsApplication {
 		SpringApplication.run(HmsApplication.class, args);
 	}
 
-//	@GetMapping("/")
-//	public String apiRoot() {
-//		return "Trello";
-//	}
+	@GetMapping("/")
+	public String returnHome() {
+		return "You are at Homepage";
+	}
 }
