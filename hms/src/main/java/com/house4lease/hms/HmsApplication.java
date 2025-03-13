@@ -17,4 +17,5 @@ public class HmsApplication {
 	public String returnHome() {
 		return "You are at Homepage";
 	}
+
 }

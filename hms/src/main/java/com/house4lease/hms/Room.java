@@ -13,6 +13,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 public class Room {
     @Id
     public ObjectId _id;
+
     public Integer roomNumber;
     public Double price;
     public Double size;

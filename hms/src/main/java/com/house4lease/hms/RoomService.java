@@ -19,14 +19,15 @@ public class RoomService {
     @Autowired
     private RoomRepository roomRepo;
 
+    @Autowired
     private MongoTemplate mongoTemplate;
 
     public Optional<Room> selectRoom(Integer room_number){
         return roomRepo.findRoomByRoomNumber((room_number));
     }
 
-    public Optional<Room> updateRoomInfo(Integer roomNumber, RoomUpdateDTO roomDTO) {
-        Query query = new Query(Criteria.where("roomNumber").is(roomNumber));
+    public Optional<Room> updateRoomInfo(RoomUpdateDTO roomDTO) {
+        Query query = new Query(Criteria.where("roomNumber").is(roomDTO.getRoomNumber()));
 
         Update update = new Update()
                 .set("price", roomDTO.getPrice())
