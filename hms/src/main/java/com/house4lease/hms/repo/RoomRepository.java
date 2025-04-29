@@ -1,5 +1,6 @@
-package com.house4lease.hms;
+package com.house4lease.hms.repo;
 
+import com.house4lease.hms.entity.Room;
 import org.bson.types.ObjectId;
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.stereotype.Repository;

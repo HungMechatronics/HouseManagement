@@ -1,7 +1,4 @@
-package com.house4lease.hms;
-import lombok.Data;
-import lombok.Getter;
-import lombok.Setter;
+package com.house4lease.hms.dataObject;
 
 
 //@Setter

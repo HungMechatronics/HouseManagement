@@ -1,4 +1,4 @@
-package com.house4lease.hms;
+package com.house4lease.hms.entity;
 
 import lombok.Data;
 import org.bson.types.ObjectId;

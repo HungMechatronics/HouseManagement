@@ -1,5 +1,8 @@
-package com.house4lease.hms;
+package com.house4lease.hms.service;
 
+import com.house4lease.hms.dataObject.RoomUpdateDTO;
+import com.house4lease.hms.entity.Room;
+import com.house4lease.hms.repo.RoomRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.query.Criteria;
@@ -7,7 +10,6 @@ import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.data.mongodb.core.query.Update;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.Optional;
 
 // The purpose of Service is to create a function connection
