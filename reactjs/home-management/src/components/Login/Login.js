@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 import './Login.css';
 import api from '../../api/axiosConfig';
+import { useNavigate } from 'react-router-dom';
 
 function Login() {
+  const navigate = useNavigate();
   const [phoneNumber, setPhoneNumber] = useState('');
   const [password, setPassword] = useState('');
 
@@ -13,8 +15,22 @@ function Login() {
 
 
     try {
-          const response = await api.get(`/user/login/${phoneNumber}~${password}`);
-          console.log('Login successful:', response.data);
+          // Get data from back-end
+          const response = await api.post(`/user/login`, {
+            phoneNumber: phoneNumber,
+            password: password
+          });
+
+          console.log(response.data.role)
+          if (response.data && response.data.role == 'admin'){
+            navigate('/home/admin');
+          } else {
+            navigate('/home/other');
+          }
+
+          const loginScreen = await api.get(`/user/${response.data.userID}`)
+
+          console.log('Login successful:', response.data.userID);
           alert('Login successful!');
           // You can redirect or store token here
         } catch (error) {
@@ -22,6 +38,17 @@ function Login() {
           alert('Login failed. Please check your credentials.');
         }
   };
+
+  const handleRegistration = async (e) => {
+    e.preventDefault();
+
+    try{
+    navigate('/registration');
+    } catch (error) {
+        console.error('Registration failed:', error);
+        alert('Registration failed. Please check your credentials.');
+    }
+  }
 
   return (
     <div className="login-container">
@@ -42,6 +69,9 @@ function Login() {
           required
         />
         <button type="submit">Login</button>
+      </form>
+      <form onSubmit={handleRegistration} className="registration-form">
+            <button type="submit">Registration</button>
       </form>
     </div>
   );

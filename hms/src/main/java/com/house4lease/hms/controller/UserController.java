@@ -1,5 +1,6 @@
 package com.house4lease.hms.controller;
 
+import com.house4lease.hms.dataObject.LoginDTO;
 import com.house4lease.hms.entity.User;
 import com.house4lease.hms.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,9 +27,9 @@ public class UserController {
     }
 
     // Get ID from phone number and password
-    @GetMapping(path = "/login/{pNumber}~{password}")
-    public ResponseEntity<User> getUserLogin(@PathVariable Integer pNumber, @PathVariable String password){
-        Optional<User> user = userService.selectUserByLogin(pNumber, password);
+    @PostMapping(path = "/login")
+    public ResponseEntity<User> getUserLogin(@RequestBody LoginDTO loginDTO){
+        Optional<User> user = userService.selectUserByLogin(loginDTO.getPhoneNumber(), loginDTO.getPassword());
 
         return user.map(ResponseEntity::ok)
                 .orElseGet(() -> ResponseEntity.notFound().build());
